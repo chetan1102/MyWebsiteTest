@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using MyWebsiteTest.PageObjects;
@@ -20,10 +22,17 @@ namespace MyWebsiteTest
         internal LoginPage loginpage;
         internal Registration registrationpage;
 
-        [SetUp]
-        public void startTest()
+       
+        public void startTest(string browserName)
         {
-            driver = new ChromeDriver();
+            if (browserName.Equals("ie"))
+                driver = new InternetExplorerDriver();
+            else if (browserName.Equals("chrome"))
+                driver = new ChromeDriver();
+            else
+                driver = new FirefoxDriver();
+            
+            //driver = new ChromeDriver();
             //driver.Url = "http://172.22.74.210/";
             commonLib cl = new commonLib();
             var WebApp_ContainerIP = cl.GetEnvVarFromRegistry("WEB_APP_IP"); // set the Application IP in Environment Variable
@@ -42,6 +51,14 @@ namespace MyWebsiteTest
                 registrationpage = new Registration(driver);
                 PageFactory.InitElements(driver, registrationpage);
             }
+        }
+
+        public static IEnumerable<string> BrowserToRun()
+        {
+            String[] browsers = AutomationSetting.BrowserToRun.Split(',');
+
+            foreach (string browser in browsers)
+                yield return browser;
         }
 
         [TearDown]

@@ -15,12 +15,12 @@ namespace MyWebsiteTest.PageObjects
         //private IWebDriver driver;
       
 
-        [FindsBy(How = How.Id, Using = "TextBox1")][CacheLookup]
+        [FindsBy(How = How.Id, Using = "TextBox1")]//[CacheLookup]
         public IWebElement TextBox1 { get; set; }
 
 
         [FindsBy(How = How.Name, Using = "Button1")]
-        [CacheLookup]
+        //[CacheLookup]
         public IWebElement DisplayName { get; set; }
 
         [FindsBy(How = How.XPath, Using =(".//*[@id='Label2']"))]

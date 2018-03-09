@@ -60,6 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutomationCore.cs" />
+    <Compile Include="AutomationSetting.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutomationSetting.resx</DependentUpon>
+    </Compile>
     <Compile Include="commonLib.cs" />
     <Compile Include="HomePage.cs" />
     <Compile Include="LoginPage.cs" />
@@ -78,6 +83,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="NUnit.Console-3.8.0\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AutomationSetting.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AutomationSetting.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.2.35.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.35.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
