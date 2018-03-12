@@ -61,7 +61,7 @@ namespace MyWebsiteTest {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to chrome,firefox.
+        ///   Looks up a localized string similar to chrome.
         /// </summary>
         internal static string BrowserToRun {
             get {
